@@ -30,4 +30,13 @@ public class Person {
         this.name = person.name();
         this.dateBirth = person.dateBirth();
     }
+
+    public void updatePerson(DataEditPerson person) {
+        if (person.name() != null) {
+            this.name = person.name();
+        }
+        if (person.dateBirth() != null) {
+            this.dateBirth = person.dateBirth();
+        }
+    }
 }
