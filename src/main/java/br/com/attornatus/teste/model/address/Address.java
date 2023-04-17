@@ -15,11 +15,15 @@ public class Address {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String street;
+
     private String zipCode;
+
     private String number;
+
     private String city;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "per_add_id")
     private Person person;
 }

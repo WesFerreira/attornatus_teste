@@ -18,9 +18,16 @@ public class Person {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     private LocalDate dateBirth;
+
     @OneToMany(mappedBy = "person", fetch = FetchType.LAZY)
     private List<Address> address;
 
+    public Person(DataNewPerson person) {
+        this.name = person.name();
+        this.dateBirth = person.dateBirth();
+    }
 }
