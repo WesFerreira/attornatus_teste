@@ -28,4 +28,11 @@ public class PersonController {
     public void editPerson(@RequestBody @Valid DataEditPerson person) {
         personService.editPerson(person);
     }
+
+    @GetMapping ("/{id}")
+    public DataEditPerson listPerson(@PathVariable Long id) {
+        var person = personService.listPerson(id);
+        return person;
+    }
+
 }

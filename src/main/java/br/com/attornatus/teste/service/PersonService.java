@@ -4,11 +4,8 @@ import br.com.attornatus.teste.model.person.DataEditPerson;
 import br.com.attornatus.teste.model.person.DataNewPerson;
 import br.com.attornatus.teste.model.person.Person;
 import br.com.attornatus.teste.repository.PersonRepository;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class PersonService {
@@ -25,4 +22,10 @@ public class PersonService {
         person.updatePerson(data);
         return person;
     }
+
+   public DataEditPerson listPerson (Long id) {
+        var person = repository.getReferenceById(id);
+        return new DataEditPerson(person);
+   }
+
 }

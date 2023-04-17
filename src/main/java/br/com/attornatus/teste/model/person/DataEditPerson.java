@@ -12,4 +12,9 @@ public record DataEditPerson(
         String name,
 
         LocalDate dateBirth) {
+
+        public DataEditPerson(Person person) {
+            this(person.getId(), person.getName(), person.getDateBirth());
+        }
+
 }
