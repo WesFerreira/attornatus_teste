@@ -2,9 +2,7 @@ package br.com.attornatus.teste.model.person;
 
 import br.com.attornatus.teste.model.address.Address;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -12,8 +10,10 @@ import java.util.List;
 @Entity
 @Table(name = "people")
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class Person {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,15 +23,16 @@ public class Person {
 
     private LocalDate dateBirth;
 
-    @OneToMany(mappedBy = "person", fetch = FetchType.LAZY)
-    private List<Address> address;
-
-    public Person(DataNewPerson person) {
-        this.name = person.name();
-        this.dateBirth = person.dateBirth();
+    public Person(DataNewPerson data) {
+        this.name = data.name();
+        this.dateBirth = data.dateBirth();
     }
 
-    public void updatePerson(DataEditPerson person) {
+    public Person(Long idPerson) {
+        this.id = getId();
+    }
+
+    public void updatePerson(DataPerson person) {
         if (person.name() != null) {
             this.name = person.name();
         }

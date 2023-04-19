@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
-public record DataEditPerson(
+public record DataPerson(
 
         @NotNull
         Long id,
@@ -13,7 +13,7 @@ public record DataEditPerson(
 
         LocalDate dateBirth) {
 
-        public DataEditPerson(Person person) {
+        public DataPerson(Person person) {
             this(person.getId(), person.getName(), person.getDateBirth());
         }
 
